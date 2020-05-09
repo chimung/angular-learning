@@ -1,25 +1,31 @@
-==> {{ op1 }} {{ operator }} {{ op2 }} {{ result !== null ? '=' : '' }} {{ result }}
-<br>
-<button type="button" (click)="addValue(1)">1</button>
-<button type="button" (click)="addValue(2)">2</button>
-<button type="button" (click)="addValue(3)">3</button>
-<br>
-<button type="button" (click)="addValue(4)">4</button>
-<button type="button" (click)="addValue(5)">5</button>
-<button type="button" (click)="addValue(6)">6</button>
-<br>
-<button type="button" (click)="addValue(7)">7</button>
-<button type="button" (click)="addValue(8)">8</button>
-<button type="button" (click)="addValue(9)">9</button>
-<br>
+<div class="container mt-5">
+    <h3 class="font-weight-bolder mb-4">TShirt Shoping is awesome</h3>
+    <div class="w-100 text-right">
+        <button type="button" class="btn btn-primary mb-2" (click)="isShowImage = !isShowImage">
+            {{ isShowImage ? 'Hide image' : 'Show image' }}
+        </button>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th *ngIf="isShowImage">Product photos</th>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Product Stock</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of data">
+                <td *ngIf="isShowImage">
+                    <img [src]="item.image_front" alt="" class="product-image image-front">
+                    <img [src]="item.image_back" alt="" class="product-image image-back">
+                </td>
+                <td> {{ item.product_name }}</td>
+                <td> {{ item.price | productPriceEasy }} USD</td>
+                <td [ngClass]="item.stock < 40 ? 'text-danger' : 'text-success'"> {{ item.stock }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-Operator
-<br>
-<button type="button" (click)="setOperator('+')">+</button>
-<button type="button" (click)="setOperator('-')">-</button>
-<button type="button" (click)="setOperator('*')">*</button>
-<button type="button" (click)="setOperator('/')">/</button>
-<br>
-<button type="button" (click)="clear()">C</button>
-<button type="button" (click)="calc()">Calc</button>
 

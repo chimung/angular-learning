@@ -1,0 +1,21 @@
+.product-image {
+    cursor: pointer;
+    width: 7rem;
+    padding: 1rem;
+}
+
+.image-front {
+    display: block;
+}
+
+.image-back {
+    display: none;
+}
+
+.image-front:hover {
+    display: none;
+}
+
+.image-front:hover+.image-back {
+    display: block;
+}
